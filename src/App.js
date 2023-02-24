@@ -1,23 +1,144 @@
-import logo from './logo.svg';
 import './App.css';
+import {  Card, EinrideProvider, einrideTheme, Group, Paragraph, Stack, VerticalSpacing } from '@einride/ui';
+import { useState } from 'react';
+
+const BookingStop = ({ order, stop })=> {
+  const { locationOrAddress, requestedStartTime, requestedEndTime, stopType } = stop
+  return (
+    <Group justifyContent="space-between" alignItems="center" gap={0}>
+      <Group gap="xs">
+        <Paragraph>{order}</Paragraph>
+        <Paragraph>
+          {locationOrAddress.name}
+        </Paragraph>
+      </Group>
+      {/* <Paragraph color="secondary">
+        <TimeWindow requestedStartTime={requestedStartTime} requestedEndTime={requestedEndTime} />
+      </Paragraph> */}
+    </Group>
+  )
+}
 
 function App() {
+  const [showMiddleSteps, setShowMiddleSteps] = useState(false)
+
+  const stops = [
+    {
+      __typename: "Stop",
+      type: "p",
+      id: "pickup-location",
+      state: "Awaiting",
+      instructions: "pickup instructions",
+      contactPerson: "contact person pickup",
+      requestedEndTime: null,
+      requestedStartTime: null,
+      locationOrAddress: {
+        //...mockLocation,
+        name: "stop1",
+      },
+      actualEndTimeOrDate: null,
+      actualStartTimeOrDate: null,
+    },
+    {
+      __typename: "Stop",
+      type: "p",
+      id: "delivery-address",
+      state: "Awaiting",
+      instructions: "pickup instructions",
+      contactPerson: "contact person delivery",
+      requestedEndTime: null,
+      requestedStartTime: null,
+      locationOrAddress: {
+        // ...mockLocation,
+        name: "stop3",
+      },
+      actualEndTimeOrDate: null,
+      actualStartTimeOrDate: null,
+    },
+    {
+      __typename: "Stop",
+      type: "p",
+      id: "delivery-address",
+      state: "Awaiting",
+      instructions: "pickup instructions",
+      contactPerson: "contact person delivery",
+      requestedEndTime: null,
+      requestedStartTime: null,
+      locationOrAddress: {
+        // ...mockLocation,
+        name: "stop3",
+      },
+      actualEndTimeOrDate: null,
+      actualStartTimeOrDate: null,
+    },
+    {
+      __typename: "Stop",
+      type: "p",
+      id: "delivery-address",
+      state: "Awaiting",
+      instructions: "pickup instructions",
+      contactPerson: "contact person delivery",
+      requestedEndTime: null,
+      requestedStartTime: null,
+      locationOrAddress: {
+        // ...mockLocation,
+        name: "stop3",
+      },
+      actualEndTimeOrDate: null,
+      actualStartTimeOrDate: null,
+    },
+  ]
+  const middleSteps = stops.slice(1, -1)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <EinrideProvider theme={einrideTheme}>
+      <Card background="secondary">
+        <Group justifyContent="space-between" gap={0}>
+          <Paragraph color="secondary">
+           43
+          </Paragraph>
+        </Group>
+        <VerticalSpacing size="sm" />
+         <Stack gap={0}>
+          <BookingStop order={1} stop={stops[0]} />
+          <Stack
+            onMouseOver={() => setShowMiddleSteps(true)}
+            onMouseOut={() => setShowMiddleSteps(false)}
+            onTouchStart={(e) => {
+              e.stopPropagation()
+              e.preventDefault()
+              setShowMiddleSteps(true)
+            }}
+            onTouchEnd={(e) => {
+              e.stopPropagation()
+              e.preventDefault()
+              setShowMiddleSteps(false)
+            }}
+          >
+            {!showMiddleSteps && (
+              <Group gap="xs">
+                <Paragraph color="secondary">|</Paragraph>
+                <Paragraph color="secondary" style={{ textDecoration: "underline" }}>
+                moreStops{ middleSteps.length }
+                </Paragraph>
+              </Group>
+            )}
+            {showMiddleSteps && (
+              <Stack gap={0}>
+                {middleSteps.map((stop, i) => (
+                  <BookingStop
+                    key={`${stop.locationOrAddress.name}-${stop.requestedStartTime}`}
+                    order={i + 2}
+                    stop={stop}
+                  />
+                ))}
+              </Stack>
+            )}
+          </Stack>
+          </Stack>
+          </Card>
+          </EinrideProvider>
     </div>
   );
 }
