@@ -109,14 +109,12 @@ function App() {
             onMouseOver={(e) => {
               e.nativeEvent.stopPropagation()
               e.nativeEvent.stopImmediatePropagation()
-              e.stopImmediatePropagation()
               e.nativeEvent.preventDefault()
               setShowMiddleSteps(true)
             }}
             onMouseOut={(e) =>{
               e.nativeEvent.stopPropagation()
               e.nativeEvent.stopImmediatePropagation()
-              e.stopImmediatePropagation()
               e.nativeEvent.preventDefault()
               setShowMiddleSteps(false)
             }}
@@ -153,14 +151,14 @@ function App() {
             onTouchStart={(e) => {
               e.nativeEvent.stopPropagation()
               e.nativeEvent.stopImmediatePropagation()
-              e.stopImmediatePropagation()
               e.nativeEvent.preventDefault()
               setShowMiddleSteps(!showMiddleSteps)
             }}
             onClick={(e) => {
+              e.stopPropagation()
+              e.preventDefault()
               e.nativeEvent.stopPropagation()
               e.nativeEvent.stopImmediatePropagation()
-              e.stopImmediatePropagation()
               e.nativeEvent.preventDefault()
             }}
             // onTouchMove={(e) => {
