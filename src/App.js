@@ -110,16 +110,19 @@ function App() {
             onMouseOut={() => setShowMiddleSteps(false)}
             onTouchStart={(e) => {
               e.stopPropagation()
+              e.stopImmediatePropagation()
               e.preventDefault()
               setShowMiddleSteps(true)
             }}
             onTouchEnd={(e) => {
               e.stopPropagation()
+              e.stopImmediatePropagation()
               e.preventDefault()
               setShowMiddleSteps(false)
             }}
             onTouchMove={(e) => {
               e.stopPropagation()
+              e.stopImmediatePropagation()
               e.preventDefault()
             }}
           >
