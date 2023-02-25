@@ -108,23 +108,25 @@ function App() {
           <Stack
             onMouseOver={() => setShowMiddleSteps(true)}
             onMouseOut={() => setShowMiddleSteps(false)}
-            onTouchStart={(e) => {
-              e.stopPropagation()
-              e.stopImmediatePropagation()
-              e.preventDefault()
-              setShowMiddleSteps(true)
-            }}
+            // onTouchStart={(e) => {
+            //   e.stopPropagation()
+            //   e.nativeEvent.stopImmediatePropagation()
+            //   e.preventDefault()
+            //   setShowMiddleSteps(true)
+            // }}
             onTouchEnd={(e) => {
-              e.stopPropagation()
+              e.nativeEvent.stopPropagation()
+              e.nativeEvent.stopImmediatePropagation()
               e.stopImmediatePropagation()
-              e.preventDefault()
-              setShowMiddleSteps(false)
+              e.nativeEvent.preventDefault()
+              setShowMiddleSteps(!showMiddleSteps)
             }}
-            onTouchMove={(e) => {
-              e.stopPropagation()
-              e.stopImmediatePropagation()
-              e.preventDefault()
-            }}
+            // onTouchMove={(e) => {
+            //   e.stopPropagation()
+            //   e.nativeEvent.stopImmediatePropagation()
+            //   e.preventDefault()
+            // }}
+            // onTou
           >
             {!showMiddleSteps && (
               <Group gap="xs">
