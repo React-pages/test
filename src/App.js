@@ -1,5 +1,5 @@
 import './App.css';
-import {  Card, EinrideProvider, einrideTheme, Group, Link, Paragraph, Stack, VerticalSpacing } from '@einride/ui';
+import {  Card, EinrideProvider, einrideTheme, Group, Link, Paragraph, Stack, useTheme, VerticalSpacing } from '@einride/ui';
 import { useState } from 'react';
 
 const BookingStop = ({ order, stop })=> {
@@ -91,6 +91,7 @@ function App() {
   ]
   const middleSteps = stops.slice(1, -1)
 
+
   return (
     <div className="App">
       <EinrideProvider theme={einrideTheme}>
@@ -112,7 +113,7 @@ function App() {
               // e.nativeEvent.preventDefault()
               setShowMiddleSteps(true)
             }}
-            onMouseLeave={(e) =>{
+            onMouseOut={(e) =>{
               // e.nativeEvent.stopPropagation()
               // e.nativeEvent.stopImmediatePropagation()
               // e.nativeEvent.preventDefault()
@@ -160,6 +161,9 @@ function App() {
               e.nativeEvent.stopPropagation()
               e.nativeEvent.stopImmediatePropagation()
               e.nativeEvent.preventDefault()
+              if (showMiddleSteps) {
+                setShowMiddleSteps(false)
+              }
             }}
           >
             {!showMiddleSteps && (
