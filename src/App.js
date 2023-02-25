@@ -1,6 +1,7 @@
 import './App.css';
 import {  Card, EinrideProvider, einrideTheme, Group, Link, Paragraph, Stack, useTheme, VerticalSpacing } from '@einride/ui';
 import { useState } from 'react';
+import { useMediaQuery } from '@einride/hooks';
 
 const BookingStop = ({ order, stop })=> {
   const { locationOrAddress, requestedStartTime, requestedEndTime, stopType } = stop
@@ -12,10 +13,99 @@ const BookingStop = ({ order, stop })=> {
           {locationOrAddress.name}
         </Paragraph>
       </Group>
-      {/* <Paragraph color="secondary">
-        <TimeWindow requestedStartTime={requestedStartTime} requestedEndTime={requestedEndTime} />
-      </Paragraph> */}
     </Group>
+  )
+}
+
+const BookingStopContainer = ({ middleSteps })=> {
+  const [showMiddleSteps, setShowMiddleSteps] = useState(false)
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.mediaQueries.belowMd)
+  return (
+    <Stack
+            onMouseOver={(e) => {
+              // e.nativeEvent.stopPropagation()
+              // e.nativeEvent.stopImmediatePropagation()
+              // e.nativeEvent.preventDefault()
+              if (!isMobile) {
+                setShowMiddleSteps(true)
+              }
+            }}
+            onMouseOut={(e) =>{
+              // e.nativeEvent.stopPropagation()
+              // e.nativeEvent.stopImmediatePropagation()
+              // e.nativeEvent.preventDefault()
+              if (!isMobile) {
+              setShowMiddleSteps(false)
+            }
+            }}
+            // onTouchMove={(e) => {
+            //   e.stopPropagation()
+            //   e.nativeEvent.stopImmediatePropagation()
+            //   e.preventDefault()
+            // }}
+            // onMouseDown={(e) => {
+            //   e.stopPropagation()
+            //   e.nativeEvent.stopImmediatePropagation()
+            //   e.preventDefault()
+            // }}
+            // onMouseEnter={(e) => {
+            //   e.stopPropagation()
+            //   e.nativeEvent.stopImmediatePropagation()
+            //   e.preventDefault()
+            // }}
+            // onMouseMove={(e) => {
+            //   e.stopPropagation()
+            //   e.nativeEvent.stopImmediatePropagation()
+            //   e.preventDefault()
+            // }}
+            // onMouseUp={(e) => {
+            //   e.stopPropagation()
+            //   e.nativeEvent.stopImmediatePropagation()
+            //   e.preventDefault()
+            // }}
+            // onTouchEnd={(e) => {
+            //   e.stopPropagation()
+            //   e.nativeEvent.stopImmediatePropagation()
+            //   e.preventDefault()
+            // }}
+            // onTouchStart={(e) => {
+            //   e.nativeEvent.stopPropagation()
+            //   e.nativeEvent.stopImmediatePropagation()
+            //   e.nativeEvent.preventDefault()
+            //   setShowMiddleSteps(!showMiddleSteps)
+            // }}
+            onClick={(e) => {
+              e.stopPropagation()
+              e.preventDefault()
+              e.nativeEvent.stopPropagation()
+              e.nativeEvent.stopImmediatePropagation()
+              e.nativeEvent.preventDefault()
+              if (isMobile) {
+                setShowMiddleSteps(!showMiddleSteps)
+              }
+            }}
+          >
+            {!showMiddleSteps && (
+              <Group gap="xs">
+                <Paragraph color="secondary">|</Paragraph>
+                <Paragraph color="secondary" style={{ textDecoration: "underline" }}>
+                moreStops{ middleSteps.length }
+                </Paragraph>
+              </Group>
+            )}
+            {showMiddleSteps && (
+              <Stack gap={0}>
+                {middleSteps.map((stop, i) => (
+                  <BookingStop
+                    key={`${stop.locationOrAddress.name}-${stop.requestedStartTime}`}
+                    order={i + 2}
+                    stop={stop}
+                  />
+                ))}
+              </Stack>
+            )}
+          </Stack>
   )
 }
 
@@ -106,7 +196,8 @@ function App() {
         <VerticalSpacing size="sm" />
          <Stack gap={0}>
           <BookingStop order={1} stop={stops[0]} />
-          <Stack
+          <BookingStopContainer middleSteps={middleSteps} />
+          {/* <Stack
             onMouseOver={(e) => {
               // e.nativeEvent.stopPropagation()
               // e.nativeEvent.stopImmediatePropagation()
@@ -185,7 +276,7 @@ function App() {
                 ))}
               </Stack>
             )}
-          </Stack>
+          </Stack> */}
           </Stack>
           </Card>
           {/* </Link> */}

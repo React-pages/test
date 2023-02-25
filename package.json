@@ -6,6 +6,7 @@
   "dependencies": {
     "@einride/ui": "^6.34.0",
     "@emotion/react": "^11.10.5",
+    "@einride/hooks": "1.7.5",
     "@emotion/styled": "^11.10.5",
     "@reduxjs/toolkit": "^1.9.0",
     "@testing-library/jest-dom": "^5.16.5",
