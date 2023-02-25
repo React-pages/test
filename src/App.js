@@ -1,5 +1,5 @@
 import './App.css';
-import {  Card, EinrideProvider, einrideTheme, Group, Paragraph, Stack, VerticalSpacing } from '@einride/ui';
+import {  Card, EinrideProvider, einrideTheme, Group, Link, Paragraph, Stack, VerticalSpacing } from '@einride/ui';
 import { useState } from 'react';
 
 const BookingStop = ({ order, stop })=> {
@@ -21,6 +21,7 @@ const BookingStop = ({ order, stop })=> {
 
 function App() {
   const [showMiddleSteps, setShowMiddleSteps] = useState(false)
+  const [color, setColor] = useState('black')
 
   const stops = [
     {
@@ -93,7 +94,9 @@ function App() {
   return (
     <div className="App">
       <EinrideProvider theme={einrideTheme}>
-      <Card background="secondary">
+      <div style={{height: '30px', width: '30px', backgroundColor: color}}></div>
+      {/* <Link to={"./"}> */}
+      <Card background="secondary" onClick={() => setColor(color === 'black' ? 'blue' : 'black')}>
         <Group justifyContent="space-between" gap={0}>
           <Paragraph color="secondary">
            43
@@ -138,6 +141,7 @@ function App() {
           </Stack>
           </Stack>
           </Card>
+          {/* </Link> */}
           </EinrideProvider>
     </div>
   );
