@@ -112,7 +112,7 @@ function App() {
               // e.nativeEvent.preventDefault()
               setShowMiddleSteps(true)
             }}
-            onMouseOut={(e) =>{
+            onMouseLeave={(e) =>{
               // e.nativeEvent.stopPropagation()
               // e.nativeEvent.stopImmediatePropagation()
               // e.nativeEvent.preventDefault()
