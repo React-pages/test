@@ -118,6 +118,10 @@ function App() {
               e.preventDefault()
               setShowMiddleSteps(false)
             }}
+            onTouchMove={(e) => {
+              e.stopPropagation()
+              e.preventDefault()
+            }}
           >
             {!showMiddleSteps && (
               <Group gap="xs">
