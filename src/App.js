@@ -107,53 +107,53 @@ function App() {
           <BookingStop order={1} stop={stops[0]} />
           <Stack
             onMouseOver={(e) => {
-              e.nativeEvent.stopPropagation()
-              e.nativeEvent.stopImmediatePropagation()
-              e.nativeEvent.preventDefault()
+              // e.nativeEvent.stopPropagation()
+              // e.nativeEvent.stopImmediatePropagation()
+              // e.nativeEvent.preventDefault()
               setShowMiddleSteps(true)
             }}
             onMouseOut={(e) =>{
-              e.nativeEvent.stopPropagation()
-              e.nativeEvent.stopImmediatePropagation()
-              e.nativeEvent.preventDefault()
+              // e.nativeEvent.stopPropagation()
+              // e.nativeEvent.stopImmediatePropagation()
+              // e.nativeEvent.preventDefault()
               setShowMiddleSteps(false)
             }}
-            onTouchMove={(e) => {
-              e.stopPropagation()
-              e.nativeEvent.stopImmediatePropagation()
-              e.preventDefault()
-            }}
-            onMouseDown={(e) => {
-              e.stopPropagation()
-              e.nativeEvent.stopImmediatePropagation()
-              e.preventDefault()
-            }}
-            onMouseEnter={(e) => {
-              e.stopPropagation()
-              e.nativeEvent.stopImmediatePropagation()
-              e.preventDefault()
-            }}
-            onMouseMove={(e) => {
-              e.stopPropagation()
-              e.nativeEvent.stopImmediatePropagation()
-              e.preventDefault()
-            }}
-            onMouseUp={(e) => {
-              e.stopPropagation()
-              e.nativeEvent.stopImmediatePropagation()
-              e.preventDefault()
-            }}
-            onTouchEnd={(e) => {
-              e.stopPropagation()
-              e.nativeEvent.stopImmediatePropagation()
-              e.preventDefault()
-            }}
-            onTouchStart={(e) => {
-              e.nativeEvent.stopPropagation()
-              e.nativeEvent.stopImmediatePropagation()
-              e.nativeEvent.preventDefault()
-              setShowMiddleSteps(!showMiddleSteps)
-            }}
+            // onTouchMove={(e) => {
+            //   e.stopPropagation()
+            //   e.nativeEvent.stopImmediatePropagation()
+            //   e.preventDefault()
+            // }}
+            // onMouseDown={(e) => {
+            //   e.stopPropagation()
+            //   e.nativeEvent.stopImmediatePropagation()
+            //   e.preventDefault()
+            // }}
+            // onMouseEnter={(e) => {
+            //   e.stopPropagation()
+            //   e.nativeEvent.stopImmediatePropagation()
+            //   e.preventDefault()
+            // }}
+            // onMouseMove={(e) => {
+            //   e.stopPropagation()
+            //   e.nativeEvent.stopImmediatePropagation()
+            //   e.preventDefault()
+            // }}
+            // onMouseUp={(e) => {
+            //   e.stopPropagation()
+            //   e.nativeEvent.stopImmediatePropagation()
+            //   e.preventDefault()
+            // }}
+            // onTouchEnd={(e) => {
+            //   e.stopPropagation()
+            //   e.nativeEvent.stopImmediatePropagation()
+            //   e.preventDefault()
+            // }}
+            // onTouchStart={(e) => {
+            //   e.nativeEvent.stopPropagation()
+            //   e.nativeEvent.stopImmediatePropagation()
+            //   e.nativeEvent.preventDefault()
+            //   setShowMiddleSteps(!showMiddleSteps)
+            // }}
             onClick={(e) => {
               e.stopPropagation()
               e.preventDefault()
@@ -161,12 +161,6 @@ function App() {
               e.nativeEvent.stopImmediatePropagation()
               e.nativeEvent.preventDefault()
             }}
-            // onTouchMove={(e) => {
-            //   e.stopPropagation()
-            //   e.nativeEvent.stopImmediatePropagation()
-            //   e.preventDefault()
-            // }}
-            // onTou
           >
             {!showMiddleSteps && (
               <Group gap="xs">
