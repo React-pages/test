@@ -27,7 +27,7 @@ const BookingStopContainer = ({ middleSteps })=> {
               if (!isMobile) {
                 setShowMiddleSteps(true)
               }
-            }}
+            }}s
             onMouseOut={() =>{
               if (!isMobile) {
               setShowMiddleSteps(false)
@@ -35,10 +35,7 @@ const BookingStopContainer = ({ middleSteps })=> {
             }}
             onClick={(e) => {
               e.stopPropagation()
-              e.preventDefault()
-              // e.nativeEvent.stopPropagation()
-              // e.nativeEvent.stopImmediatePropagation()
-              // e.nativeEvent.preventDefault()
+              // e.preventDefault()
               if (isMobile) {
                 setShowMiddleSteps(!showMiddleSteps)
               }
