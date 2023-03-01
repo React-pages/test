@@ -35,6 +35,7 @@ const BookingStopContainer = ({ middleSteps })=> {
             }}
             onClick={(e) => {
               e.stopPropagation()
+               e.preventDefault()
               // e.preventDefault()
               if (isMobile) {
                 setShowMiddleSteps(!showMiddleSteps)
